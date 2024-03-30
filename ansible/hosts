@@ -1,0 +1,8 @@
+[nets]
+
+inetRouter bond_ip=192.168.255.1
+centralRouter bond_ip=192.168.255.2
+testClient1 vlan_id=1 vlan_ip=10.10.10.254
+testServer1 vlan_id=1 vlan_ip=10.10.10.1
+testClient2 vlan_id=2 vlan_ip=10.10.10.254
+testServer2 vlan_id=2 vlan_ip=10.10.10.1
