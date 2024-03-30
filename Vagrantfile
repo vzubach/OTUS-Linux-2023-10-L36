@@ -4,19 +4,20 @@ Vagrant.configure(2) do |config|
     v.cpus = 2
   end
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "vvv"
+    ansible.verbose = "v"
     ansible.playbook = "ansible/playbook.yml"
-    ansible.host_vars = {
-        "inetRouter" => {"bond_ip" => "192.168.255.1"},
-        "centralRouter" => {"bond_ip" => "192.168.255.2"},
-        "testClient1" => {"vlan_id" => 1, "vlan_ip" => "10.10.10.254"},
-        "testServer1" => {"vlan_id" => 1, "vlan_ip" => "10.10.10.1"},
-        "testClient2" => {"vlan_id" => 2, "vlan_ip" => "10.10.10.254"},
-        "testServer2" => {"vlan_id" => 2, "vlan_ip" => "10.10.10.1"}
-    }
-    #ansible.inventory_path = "ansible/hosts"
+    #ansible.host_vars = {
+    #    "inetRouter" => {"bond_ip" => "192.168.255.1"},
+    #    "centralRouter" => {"bond_ip" => "192.168.255.2"},
+    #    "testClient1" => {"vlan_id" => 1, "vlan_ip" => "10.10.10.254"},
+    #    "testServer1" => {"vlan_id" => 1, "vlan_ip" => "10.10.10.1"},
+    #    "testClient2" => {"vlan_id" => 2, "vlan_ip" => "10.10.10.254"},
+    #    "testServer2" => {"vlan_id" => 2, "vlan_ip" => "10.10.10.1"}
+    #}
+    ansible.inventory_path = "ansible/hosts"
     #ansible.limit = "all"
     ansible.host_key_checking = "false"
+    ansible.compatibility_mode = "2.0"
     ansible.become = "true"
   end
 

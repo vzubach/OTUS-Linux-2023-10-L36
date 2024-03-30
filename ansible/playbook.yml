@@ -85,7 +85,8 @@
       with_items:
         - ifcfg-eth1
         - ifcfg-eth2
-  #Перезагрузка хостов 
-    - name: restart hosts for bond0
-      reboot:
-        reboot_timeout: 3600
+  #Перезапуск службы NetworkManager
+    - name: restart network for vlan1
+      service:
+        name: NetworkManager
+        state: restarted
